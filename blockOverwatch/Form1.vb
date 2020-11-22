@@ -1,5 +1,9 @@
 ﻿Public Class Form1
 
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        AddHandler Microsoft.Win32.SystemEvents.SessionEnding, AddressOf Handler_SessionEnding
+    End Sub
+
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Me.WindowState = FormWindowState.Minimized
         Me.Visible = False
@@ -28,6 +32,10 @@
         Else
             e.Cancel = True
         End If
+    End Sub
+
+    Public Sub Handler_SessionEnding(ByVal sender As Object, ByVal e As Microsoft.Win32.SessionEndingEventArgs)
+        End
     End Sub
 
 End Class
